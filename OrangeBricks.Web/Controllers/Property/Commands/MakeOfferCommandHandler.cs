@@ -15,8 +15,6 @@ namespace OrangeBricks.Web.Controllers.Property.Commands
 
         public void Handle(MakeOfferCommand command)
         {
-            var property = _context.Properties.Find(command.PropertyId);
-
             var offer = new Offer
             {
                 BuyerUserId = command.BuyerUserId,
@@ -26,6 +24,7 @@ namespace OrangeBricks.Web.Controllers.Property.Commands
                 UpdatedAt = DateTime.Now
             };
 
+            var property = _context.Properties.Find(command.PropertyId);
             if (property.Offers == null)
             {
                 property.Offers = new List<Offer>();
