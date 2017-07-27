@@ -1,0 +1,18 @@
+﻿@model OrangeBricks.Web.Controllers.Property.ViewModels.MyOffersViewModel
+
+@{
+    ViewBag.Title = "My Offers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Offers</h2>
+
+<p>Here is a list of your offers:</p>
+
+@foreach (var offer in Model.Offers)
+{
+    <hr />
+    <h3>@offer.Id</h3>
+    <p>Amount: @offer.Amount.ToString("C")</p>
+    <p>Status: @offer.Status</p>
+}
