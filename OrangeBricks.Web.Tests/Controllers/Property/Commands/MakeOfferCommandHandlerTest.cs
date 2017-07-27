@@ -28,7 +28,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
         }
 
         [Test]
-        public void HandlerShouldAddOfferToProperty()
+        public void HandlerShouldAssignBuyerUserIdToOffer()
         {
             var buyerUserId = "1";
             var command = new MakeOfferCommand
@@ -51,7 +51,6 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             this.context.Properties.Received(1).Find(1);
             this.context.Received(1).SaveChanges();
 
-            Assert.True(property.Offers.Count == 1);
             Assert.True(property.Offers.ElementAt(0).BuyerUserId == buyerUserId);
         }
     }

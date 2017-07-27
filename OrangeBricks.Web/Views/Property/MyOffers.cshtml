@@ -11,8 +11,9 @@
 
 @foreach (var offer in Model.Offers)
 {
+    var property = offer.Property;
     <hr />
-    <h3>@offer.Id</h3>
+    <h3>@property.StreetName</h3>
     <p>Amount: £@offer.Amount.ToString("N0")</p>
-    <p>Status: @offer.Status</p>
+    <p >Status: <span class="@offer.Status.ToString().ToLower()">@offer.Status</span></p>
 }

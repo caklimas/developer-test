@@ -1,6 +1,7 @@
 ﻿using OrangeBricks.Web.Controllers.Property.ViewModels;
 using OrangeBricks.Web.Models;
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,9 +23,10 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
             {
                 Offers = this._context.Offers
                     .Where(o => o.BuyerUserId == buyerId)
+                    .Include(o => o.Property)
                     .Select(o => new OfferViewModel
                     {
-                        Id = o.Id,
+                        Property = o.Property,
                         Amount = o.Amount,
                         Status = o.Status,
                         CreatedAt = o.CreatedAt,

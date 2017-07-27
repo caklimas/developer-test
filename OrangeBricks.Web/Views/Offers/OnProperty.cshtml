@@ -21,7 +21,7 @@
     {
         <hr/>
         <div>
-            <p><strong>Offer Amount: </strong> £@offer.Amount</p>
+            <p><strong>Offer Amount: </strong> £@offer.Amount.ToString("N0")</p>
             <p><strong>Offer Made At: </strong> @offer.CreatedAt.ToLongTimeString() on @offer.CreatedAt.ToShortDateString()</p>
             <p><strong>Status: </strong> @offer.Status</p>
         </div>
