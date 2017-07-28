@@ -87,6 +87,7 @@ namespace OrangeBricks.Web.Controllers.Property
         {
             var handler = new MakeOfferCommandHandler(_context);
 
+            //Assign the BuyerUserId to the UserId of the currently logged in buyer.
             command.BuyerUserId = User.Identity.GetUserId();
 
             handler.Handle(command);

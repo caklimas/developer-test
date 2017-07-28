@@ -9,20 +9,28 @@ using System.Web.Mvc;
 
 namespace OrangeBricks.Web.Controllers.Property.Builders
 {
+    /// <summary>
+    /// Provides functionality to build an instance of <see cref="MyOffersViewModel"/>
+    /// </summary>
     public class MyOffersViewModelBuilder
     {
-        private readonly IOrangeBricksContext _context;
+        private readonly IOrangeBricksContext context;
 
         public MyOffersViewModelBuilder(IOrangeBricksContext context)
         {
-            _context = context;
+            this.context = context;
         }
 
+        /// <summary>
+        /// Builds an instance of <see cref="MyOffersViewModel"/>
+        /// </summary>
+        /// <param name="buyerId">The user id of the buyer making the offer.</param>
+        /// <returns>An instance of <see cref="MyOffersViewModel"/></returns>
         public MyOffersViewModel Build(string buyerId)
         {
             return new MyOffersViewModel
             {
-                Offers = this._context.Offers
+                Offers = this.context.Offers
                     .Where(o => o.BuyerUserId == buyerId)
                     .Include(o => o.Property)
                     .Select(o => new MyOfferViewModel
@@ -34,7 +42,7 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
                         UpdatedAt = o.UpdatedAt
                     })
                     .ToList()
-        };
+            };
         }
     }
 }

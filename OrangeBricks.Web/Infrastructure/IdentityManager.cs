@@ -16,8 +16,7 @@ namespace OrangeBricks.Web.Infrastructure
                 new RoleStore<IdentityRole>(new ApplicationDbContext()));
             return rm.RoleExists(name);
         }
-
-
+        
         public bool CreateRole(string name)
         {
             var rm = new RoleManager<IdentityRole>(

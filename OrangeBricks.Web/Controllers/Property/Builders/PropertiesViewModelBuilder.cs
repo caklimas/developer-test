@@ -1,4 +1,5 @@
 using System;
+using System.Data.Entity;
 using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using OrangeBricks.Web.Controllers.Property.ViewModels;
@@ -17,15 +18,18 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
 
         public PropertiesViewModel Build(PropertiesQuery query)
         {
+            // The list of properties shown should NOT include properties that have an offer that was already accepted.
             var properties = _context.Properties
-                .Where(p => p.IsListedForSale);
+                .Include(p => p.Offers)
+                .Where(p => p.IsListedForSale)
+                .Where(p => !p.Offers.Any(o => o.Status == OfferStatus.Accepted));
 
             if (!string.IsNullOrWhiteSpace(query.Search))
             {
                 properties = properties.Where(x => x.StreetName.Contains(query.Search) 
                     || x.Description.Contains(query.Search));
             }
-
+            
             return new PropertiesViewModel
             {
                 Properties = properties
