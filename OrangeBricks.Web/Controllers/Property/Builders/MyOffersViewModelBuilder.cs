@@ -1,10 +1,11 @@
-﻿using OrangeBricks.Web.Controllers.Property.ViewModels;
-using OrangeBricks.Web.Models;
+﻿using OrangeBricks.Web.Models;
 using System;
 using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using OrangeBricks.Web.Controllers.Offers.ViewModels;
+using System.Web.Mvc;
 
 namespace OrangeBricks.Web.Controllers.Property.Builders
 {
@@ -24,7 +25,7 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
                 Offers = this._context.Offers
                     .Where(o => o.BuyerUserId == buyerId)
                     .Include(o => o.Property)
-                    .Select(o => new OfferViewModel
+                    .Select(o => new MyOfferViewModel
                     {
                         Property = o.Property,
                         Amount = o.Amount,
@@ -33,7 +34,7 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
                         UpdatedAt = o.UpdatedAt
                     })
                     .ToList()
-            };
+        };
         }
     }
 }

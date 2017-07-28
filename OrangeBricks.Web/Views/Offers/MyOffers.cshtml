@@ -1,4 +1,4 @@
-﻿@model OrangeBricks.Web.Controllers.Property.ViewModels.MyOffersViewModel
+﻿@model OrangeBricks.Web.Controllers.Offers.ViewModels.MyOffersViewModel
 
 @{
     ViewBag.Title = "My Offers";
@@ -7,7 +7,14 @@
 
 <h2>My Offers</h2>
 
-<p>Here is a list of your offers:</p>
+@if (Model.Offers.Any())
+{
+    <p>Here is a list of your offers:</p>
+}
+else
+{
+    <p>You have not placed any offers. Click @Html.ActionLink("here", "Index", "Property") to go view properties!</p>
+}
 
 @foreach (var offer in Model.Offers)
 {

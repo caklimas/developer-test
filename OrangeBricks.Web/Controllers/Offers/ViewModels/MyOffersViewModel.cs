@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
-namespace OrangeBricks.Web.Controllers.Property.ViewModels
+namespace OrangeBricks.Web.Controllers.Offers.ViewModels
 {
     public class MyOffersViewModel
     {
-        public List<OfferViewModel> Offers { get; set; }
+        public List<MyOfferViewModel> Offers { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OrangeBricks.Web.Controllers.Property.ViewModels
+namespace OrangeBricks.Web.Controllers.Offers.ViewModels
 {
-    public class OfferViewModel
+    public class MyOfferViewModel
     {
         public Models.Property Property { get; set; }
         public int Amount { get; set; }
