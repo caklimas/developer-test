@@ -8,6 +8,7 @@ using OrangeBricks.Web.Controllers.Property.Commands;
 using OrangeBricks.Web.Controllers.Property.ViewModels;
 using OrangeBricks.Web.Models;
 using OrangeBricks.Web.Infrastructure;
+using System;
 
 namespace OrangeBricks.Web.Controllers.Property
 {
@@ -74,7 +75,7 @@ namespace OrangeBricks.Web.Controllers.Property
             return RedirectToAction("MyProperties");
         }
 
-        [OrangeBricksAuthorize(Roles = RoleConstants.Seller)]
+        [OrangeBricksAuthorize(Roles = RoleConstants.Buyer)]
         public ActionResult MakeOffer(int id)
         {
             var builder = new MakeOfferViewModelBuilder(_context);
@@ -94,6 +95,21 @@ namespace OrangeBricks.Web.Controllers.Property
             handler.Handle(command);
 
             return RedirectToAction("Index");
+        }
+
+        [OrangeBricksAuthorize(Roles = RoleConstants.Buyer)]
+        public ActionResult MakeAppointment(int id)
+        {
+            var builder = new MakeAppointmentViewModelBuilder(_context);
+            var viewModel = builder.Build(id);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [OrangeBricksAuthorize(Roles = RoleConstants.Buyer)]
+        public ActionResult MakeAppointment(MakeAppointmentCommand command)
+        {
+            throw new NotImplementedException();
         }
     }
 }
