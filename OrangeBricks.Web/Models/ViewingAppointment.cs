@@ -7,12 +7,12 @@ using System.Web;
 namespace OrangeBricks.Web.Models
 {
     /// <summary>
-    /// Represents an appointment that the buyer has at a seller's property.
+    /// Represents a viewing appointment that the buyer has at a seller's property.
     /// </summary>
-    public class Appointment
+    public class ViewingAppointment
     {
         /// <summary>
-        /// A unique id of the <see cref="Appointment"/> record.
+        /// A unique id of the <see cref="ViewingAppointment"/> record.
         /// </summary>
         [Key]
         public int Id { get; set; }
@@ -37,7 +37,7 @@ namespace OrangeBricks.Web.Models
         /// <summary>
         /// The status of the appointment.
         /// </summary>
-        public AppointmentStatus Status { get; set; }
+        public ViewingAppointmentStatus Status { get; set; }
 
         /// <summary>
         /// The property that the appointment is for.

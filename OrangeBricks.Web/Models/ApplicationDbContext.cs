@@ -18,7 +18,7 @@ namespace OrangeBricks.Web.Models
 
         public IDbSet<Property> Properties { get; set; }
         public IDbSet<Offer> Offers { get; set; }
-        public IDbSet<Appointment> Appointments { get; set; }
+        public IDbSet<ViewingAppointment> ViewingAppointments { get; set; }
 
         public new void SaveChanges()
         {
@@ -30,7 +30,7 @@ namespace OrangeBricks.Web.Models
     {
         IDbSet<Property> Properties { get; set; }
         IDbSet<Offer> Offers { get; set; }
-        IDbSet<Appointment> Appointments { get; set; }
+        IDbSet<ViewingAppointment> ViewingAppointments { get; set; }
 
         void SaveChanges();
     }

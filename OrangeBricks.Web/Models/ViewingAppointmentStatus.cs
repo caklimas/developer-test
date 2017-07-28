@@ -8,7 +8,7 @@ namespace OrangeBricks.Web.Models
     /// <summary>
     /// Represents the current status of an appointment that a buyer makes with a seller of a property.
     /// </summary>
-    public enum AppointmentStatus
+    public enum ViewingAppointmentStatus
     {
         /// <summary>
         /// The appointment is still pending an answer from the seller.
