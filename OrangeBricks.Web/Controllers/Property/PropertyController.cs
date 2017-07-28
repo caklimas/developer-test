@@ -7,6 +7,7 @@ using OrangeBricks.Web.Controllers.Property.Builders;
 using OrangeBricks.Web.Controllers.Property.Commands;
 using OrangeBricks.Web.Controllers.Property.ViewModels;
 using OrangeBricks.Web.Models;
+using OrangeBricks.Web.Infrastructure;
 
 namespace OrangeBricks.Web.Controllers.Property
 {
@@ -28,7 +29,7 @@ namespace OrangeBricks.Web.Controllers.Property
             return View(viewModel);
         }
 
-        [OrangeBricksAuthorize(Roles = "Seller")]
+        [OrangeBricksAuthorize(Roles = RoleConstants.Seller)]
         public ActionResult Create()
         {
             var viewModel = new CreatePropertyViewModel();
@@ -40,7 +41,7 @@ namespace OrangeBricks.Web.Controllers.Property
             return View(viewModel);
         }
 
-        [OrangeBricksAuthorize(Roles = "Seller")]
+        [OrangeBricksAuthorize(Roles = RoleConstants.Seller)]
         [HttpPost]
         public ActionResult Create(CreatePropertyCommand command)
         {
@@ -53,7 +54,7 @@ namespace OrangeBricks.Web.Controllers.Property
             return RedirectToAction("MyProperties");
         }
 
-        [OrangeBricksAuthorize(Roles = "Seller")]
+        [OrangeBricksAuthorize(Roles = RoleConstants.Seller)]
         public ActionResult MyProperties()
         {
             var builder = new MyPropertiesViewModelBuilder(_context);
@@ -63,7 +64,7 @@ namespace OrangeBricks.Web.Controllers.Property
         }
 
         [HttpPost]
-        [OrangeBricksAuthorize(Roles = "Seller")]
+        [OrangeBricksAuthorize(Roles = RoleConstants.Seller)]
         public ActionResult ListForSale(ListPropertyCommand command)
         {
             var handler = new ListPropertyCommandHandler(_context);
@@ -73,7 +74,7 @@ namespace OrangeBricks.Web.Controllers.Property
             return RedirectToAction("MyProperties");
         }
 
-        [OrangeBricksAuthorize(Roles = "Buyer")]
+        [OrangeBricksAuthorize(Roles = RoleConstants.Seller)]
         public ActionResult MakeOffer(int id)
         {
             var builder = new MakeOfferViewModelBuilder(_context);
@@ -82,7 +83,7 @@ namespace OrangeBricks.Web.Controllers.Property
         }
 
         [HttpPost]
-        [OrangeBricksAuthorize(Roles = "Buyer")]
+        [OrangeBricksAuthorize(Roles = RoleConstants.Buyer)]
         public ActionResult MakeOffer(MakeOfferCommand command)
         {
             var handler = new MakeOfferCommandHandler(_context);

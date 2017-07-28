@@ -87,7 +87,7 @@ namespace OrangeBricks.Web.Controllers
         public ActionResult Register()
         {
             var viewModel = new RegisterViewModel();
-            viewModel.PossibleRoles = new string[] { "Buyer", "Seller" }
+            viewModel.PossibleRoles = RoleConstants.Roles
                 .Select(x => new SelectListItem{ Value = x, Text = x })
                 .AsEnumerable();
 
@@ -121,9 +121,9 @@ namespace OrangeBricks.Web.Controllers
                 AddErrors(result);
             }
 
-            model.PossibleRoles = new string[] { "Buyer", "Seller" }
+            model.PossibleRoles = RoleConstants.Roles
                 .Select(x => new SelectListItem { Value = x, Text = x })
-                .AsEnumerable();
+                .ToList();
             return View(model);
         }
 
