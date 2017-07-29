@@ -1,25 +1,22 @@
 using System;
 using OrangeBricks.Web.Models;
+using OrangeBricks.Web.Controllers.Base;
 
 namespace OrangeBricks.Web.Controllers.Offers.Commands
 {
-    public class AcceptOfferCommandHandler
+    public class AcceptOfferCommandHandler : CommandHandler<AcceptOfferCommand>
     {
-        private readonly IOrangeBricksContext _context;
+        public AcceptOfferCommandHandler(IOrangeBricksContext context) : base(context)
+        { }
 
-        public AcceptOfferCommandHandler(IOrangeBricksContext context)
+        public override void Handle(AcceptOfferCommand command)
         {
-            _context = context;
-        }
-
-        public void Handle(AcceptOfferCommand command)
-        {
-            var offer = _context.Offers.Find(command.OfferId);
+            var offer = this.context.Offers.Find(command.OfferId);
 
             offer.UpdatedAt = DateTime.Now;
             offer.Status = OfferStatus.Accepted;
 
-            _context.SaveChanges();
+            this.context.SaveChanges();
         }
     }
 }

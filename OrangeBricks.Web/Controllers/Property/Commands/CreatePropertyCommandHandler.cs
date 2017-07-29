@@ -1,17 +1,14 @@
+using OrangeBricks.Web.Controllers.Base;
 using OrangeBricks.Web.Models;
 
 namespace OrangeBricks.Web.Controllers.Property.Commands
 {
-    public class CreatePropertyCommandHandler
+    public class CreatePropertyCommandHandler : CommandHandler<CreatePropertyCommand>
     {
-        private readonly IOrangeBricksContext _context;
+        public CreatePropertyCommandHandler(IOrangeBricksContext context) : base(context)
+        { }
 
-        public CreatePropertyCommandHandler(IOrangeBricksContext context)
-        {
-            _context = context;
-        }
-
-        public void Handle(CreatePropertyCommand command)
+        public override void Handle(CreatePropertyCommand command)
         {
             var property = new Models.Property
             {
@@ -23,9 +20,9 @@ namespace OrangeBricks.Web.Controllers.Property.Commands
 
             property.SellerUserId = command.SellerUserId;
 
-            _context.Properties.Add(property);
+            this.context.Properties.Add(property);
 
-            _context.SaveChanges();
+            this.context.SaveChanges();
         }
     }
 }

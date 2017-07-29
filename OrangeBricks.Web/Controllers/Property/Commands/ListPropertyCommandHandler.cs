@@ -1,21 +1,18 @@
+using OrangeBricks.Web.Controllers.Base;
 using OrangeBricks.Web.Models;
 
 namespace OrangeBricks.Web.Controllers.Property.Commands
 {
-    public class ListPropertyCommandHandler
+    public class ListPropertyCommandHandler : CommandHandler<ListPropertyCommand>
     {
-        private readonly IOrangeBricksContext _context;
+        public ListPropertyCommandHandler(IOrangeBricksContext context) : base(context)
+        { }
 
-        public ListPropertyCommandHandler(IOrangeBricksContext context)
+        public override void Handle(ListPropertyCommand command)
         {
-            _context = context;
-        }
-
-        public void Handle(ListPropertyCommand command)
-        {
-            var property = _context.Properties.Find(command.PropertyId);
+            var property = this.context.Properties.Find(command.PropertyId);
             property.IsListedForSale = true;
-            _context.SaveChanges();
+            this.context.SaveChanges();
         }
     }
 }

@@ -109,7 +109,11 @@ namespace OrangeBricks.Web.Controllers.Property
         [OrangeBricksAuthorize(Roles = RoleConstants.Buyer)]
         public ActionResult MakeAppointment(MakeAppointmentCommand command)
         {
-            throw new NotImplementedException();
+            var handler = new MakeAppointmentCommandHandler(this._context);
+
+            handler.Handle(command);
+
+            return RedirectToAction("Index");
         }
     }
 }
