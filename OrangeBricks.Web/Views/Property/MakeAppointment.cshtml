@@ -9,22 +9,31 @@
 
 <p>When would you like to take a look at @Model.Property.StreetName?</p>
 
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date datetimepicker' id="datetimepicker1">
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+@using (Html.BeginForm("MakeAppointment", "Property", FormMethod.Post))
+{
+    @Html.Hidden("PropertyId", Model.Property.Id)
+    <div class="container">
+        <div class="row">
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <div class='input-group date appointment-picker' id="datetimepicker">
+                        <input type='text' class="form-control" name="AppointmentDate" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
                 </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker').datetimepicker({
+                            minDate: moment().add(1, 'hours'),
+                            stepping: 30
+                        });
+                    });
+                </script>
             </div>
-            <script type="text/javascript">
-                $(function () {
-                    $('#datetimepicker1').datetimepicker();
-                });
-            </script>
         </div>
     </div>
-</div>
+
+    <button type="submit" class="btn btn-primary">Save changes</button>
+}

@@ -20,7 +20,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    /*max-width: 280px;*/
 }
 
 .accepted {
@@ -29,4 +29,8 @@ textarea {
 
 .rejected {
     color: red;
+}
+
+.appointment-picker {
+   
 }
