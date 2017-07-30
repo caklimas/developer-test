@@ -167,10 +167,10 @@
     <Compile Include="Controllers\Appointments\AppointmentsController.cs" />
     <Compile Include="Controllers\Appointments\Builders\AppointmentsOnPropertyViewModelBuilder.cs" />
     <Compile Include="Controllers\Appointments\Builders\MyAppointmentsViewModelBuilder.cs" />
-    <Compile Include="Controllers\Appointments\Commands\AcceptAppointmentCommand.cs" />
-    <Compile Include="Controllers\Appointments\Commands\AcceptAppointmentCommandHandler.cs" />
-    <Compile Include="Controllers\Appointments\Commands\RejectAppointmentCommand.cs" />
-    <Compile Include="Controllers\Appointments\Commands\RejectAppointmentCommandHandler.cs" />
+    <Compile Include="Controllers\Appointments\ViewModels\Commands\AcceptAppointmentCommand.cs" />
+    <Compile Include="Controllers\Appointments\ViewModels\Commands\AcceptAppointmentCommandHandler.cs" />
+    <Compile Include="Controllers\Appointments\ViewModels\Commands\RejectAppointmentCommand.cs" />
+    <Compile Include="Controllers\Appointments\ViewModels\Commands\RejectAppointmentCommandHandler.cs" />
     <Compile Include="Controllers\Appointments\ViewModels\AppointmentsOnPropertyViewModel.cs" />
     <Compile Include="Controllers\Appointments\ViewModels\AppointmentViewModel.cs" />
     <Compile Include="Controllers\Appointments\ViewModels\MyAppointmentsViewModel.cs" />
