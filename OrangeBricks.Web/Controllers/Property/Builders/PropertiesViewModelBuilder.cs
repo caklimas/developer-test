@@ -16,12 +16,7 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
 
         public PropertiesViewModel Build(PropertiesQuery query)
         {
-            // The list of properties shown should NOT include properties that have an offer that was already accepted.
-            var properties = context.Properties
-                .Include(p => p.Offers)
-                .Where(p => p.IsListedForSale)
-                .Where(p => !p.Offers.Any(o => o.Status == OfferStatus.Accepted));
-
+            var properties = context.Properties.AsQueryable();
             if (!string.IsNullOrWhiteSpace(query.Search))
             {
                 properties = properties.Where(x => x.StreetName.Contains(query.Search) 

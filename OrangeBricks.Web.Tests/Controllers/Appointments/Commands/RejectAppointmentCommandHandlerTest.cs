@@ -28,7 +28,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Appointments.Commands
         }
 
         [Test]
-        public void HandleShouldAcceptAppointment()
+        public void HandleShouldRejectAppointment()
         {
             var command = new RejectAppointmentCommand
             {
@@ -39,7 +39,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Appointments.Commands
             {
                 Status = ViewingAppointmentStatus.Pending
             };
-
+            
             this.appointments.Find(1).Returns(appointment);
 
             this.handler.Handle(command);

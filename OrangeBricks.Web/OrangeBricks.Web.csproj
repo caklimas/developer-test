@@ -200,6 +200,7 @@
     <Compile Include="Controllers\Property\Commands\MakeAppointmentCommandHandler.cs" />
     <Compile Include="Controllers\Property\Commands\MakeOfferCommand.cs" />
     <Compile Include="Controllers\Property\Commands\MakeOfferCommandHandler.cs" />
+    <Compile Include="Controllers\Property\Exceptions\InvalidAppointmentException.cs" />
     <Compile Include="Controllers\Property\PropertyController.cs" />
     <Compile Include="Controllers\Property\ViewModels\CreatePropertyViewModel.cs" />
     <Compile Include="Controllers\Property\ViewModels\InvalidAppointmentViewModel.cs" />

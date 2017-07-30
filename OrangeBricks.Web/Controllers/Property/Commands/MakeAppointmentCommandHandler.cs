@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using OrangeBricks.Web.Models;
+using System.Data.Entity;
+using OrangeBricks.Web.Controllers.Property.Exceptions;
 
 namespace OrangeBricks.Web.Controllers.Property.Commands
 {
@@ -14,6 +16,22 @@ namespace OrangeBricks.Web.Controllers.Property.Commands
 
         public override void Handle(MakeAppointmentCommand command)
         {
+            var existingAppointments = this.context.ViewingAppointments
+                .AsQueryable()
+                .Include(va => va.Property)
+                .Any(a =>
+                    a.Status == ViewingAppointmentStatus.Accepted &&
+                    a.Property.Id == command.PropertyId &&
+                    command.AppointmentDate >= a.Date &&
+                    command.AppointmentDate <= DbFunctions.AddHours(a.Date, 1));
+
+            var af = this.context.ViewingAppointments
+                .AsQueryable()
+                .ToList();
+
+            if (existingAppointments)
+                throw new InvalidAppointmentException();
+
             var viewingAppointment = new ViewingAppointment
             {
                 BuyerUserId = command.BuyerUserId,
