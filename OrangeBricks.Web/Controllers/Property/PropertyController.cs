@@ -110,6 +110,7 @@ namespace OrangeBricks.Web.Controllers.Property
         public ActionResult MakeAppointment(MakeAppointmentCommand command)
         {
             var handler = new MakeAppointmentCommandHandler(this._context);
+            command.BuyerUserId = User.Identity.GetUserId();
 
             handler.Handle(command);
 

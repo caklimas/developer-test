@@ -6,20 +6,18 @@ using System.Linq;
 using System.Web;
 using OrangeBricks.Web.Controllers.Offers.ViewModels;
 using System.Web.Mvc;
+using OrangeBricks.Web.Controllers.Base;
 
 namespace OrangeBricks.Web.Controllers.Property.Builders
 {
     /// <summary>
     /// Provides functionality to build an instance of <see cref="MyOffersViewModel"/>
     /// </summary>
-    public class MyOffersViewModelBuilder
+    public class MyOffersViewModelBuilder : ViewModelBuilder
     {
-        private readonly IOrangeBricksContext context;
-
         public MyOffersViewModelBuilder(IOrangeBricksContext context)
-        {
-            this.context = context;
-        }
+            : base(context)
+        { }
 
         /// <summary>
         /// Builds an instance of <see cref="MyOffersViewModel"/>

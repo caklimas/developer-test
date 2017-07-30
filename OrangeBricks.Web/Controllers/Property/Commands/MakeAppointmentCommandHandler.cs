@@ -14,6 +14,22 @@ namespace OrangeBricks.Web.Controllers.Property.Commands
 
         public override void Handle(MakeAppointmentCommand command)
         {
+            var viewingAppointment = new ViewingAppointment
+            {
+                BuyerUserId = command.BuyerUserId,
+                Date = command.AppointmentDate,
+                Status = ViewingAppointmentStatus.Pending
+            };
+
+            var property = this.context.Properties.Find(command.PropertyId);
+            if (property.Appointments == null)
+                property.Appointments = new List<ViewingAppointment>();
+
+            viewingAppointment.SellerUserId = property.SellerUserId;
+
+            property.Appointments.Add(viewingAppointment);
+            
+            this.context.SaveChanges();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using OrangeBricks.Web.Controllers.Property.ViewModels;
+﻿using OrangeBricks.Web.Controllers.Base;
+using OrangeBricks.Web.Controllers.Property.ViewModels;
 using OrangeBricks.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,10 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
     /// <summary>
     /// Provides functionality to construct a <see cref="MakeAppointmentViewModel"/>
     /// </summary>
-    public class MakeAppointmentViewModelBuilder
+    public class MakeAppointmentViewModelBuilder : ViewModelBuilder
     {
-        private readonly IOrangeBricksContext _context;
-
-        public MakeAppointmentViewModelBuilder(IOrangeBricksContext context)
-        {
-            _context = context;
-        }
+        public MakeAppointmentViewModelBuilder(IOrangeBricksContext context) : base(context)
+        { }
 
         /// <summary>
         /// Constructs a <see cref="MakeAppointmentViewModel"/>
@@ -26,7 +23,7 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
         /// <returns>A new instantiation of <see cref="MakeAppointmentViewModel"/></returns>
         public MakeAppointmentViewModel Build(int id)
         {
-            var property = _context.Properties.Find(id);
+            var property = context.Properties.Find(id);
 
             return new MakeAppointmentViewModel
             {

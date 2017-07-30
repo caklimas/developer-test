@@ -27,7 +27,7 @@ namespace OrangeBricks.Web.Models
         /// The user id of the seller of the property.
         /// </summary>
         [Required]
-        public string SellerId { get; set; }
+        public string SellerUserId { get; set; }
 
         /// <summary>
         /// The date that the appointment will take place.

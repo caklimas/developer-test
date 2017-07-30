@@ -3,21 +3,18 @@ using System.Data.Entity;
 using System.Linq;
 using OrangeBricks.Web.Controllers.Offers.ViewModels;
 using OrangeBricks.Web.Models;
+using OrangeBricks.Web.Controllers.Base;
 
 namespace OrangeBricks.Web.Controllers.Offers.Builders
 {
-    public class OffersOnPropertyViewModelBuilder
+    public class OffersOnPropertyViewModelBuilder : ViewModelBuilder
     {
-        private readonly IOrangeBricksContext _context;
-
-        public OffersOnPropertyViewModelBuilder(IOrangeBricksContext context)
-        {
-            _context = context;
-        }
+        public OffersOnPropertyViewModelBuilder(IOrangeBricksContext context) : base(context)
+        { }
 
         public OffersOnPropertyViewModel Build(int id)
         {
-            var property = _context.Properties
+            var property = this.context.Properties
                 .Where(p => p.Id == id)
                 .Include(x => x.Offers)
                 .SingleOrDefault();

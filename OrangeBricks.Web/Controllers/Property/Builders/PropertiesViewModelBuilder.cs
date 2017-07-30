@@ -4,22 +4,20 @@ using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using OrangeBricks.Web.Controllers.Property.ViewModels;
 using OrangeBricks.Web.Models;
+using OrangeBricks.Web.Controllers.Base;
 
 namespace OrangeBricks.Web.Controllers.Property.Builders
 {
-    public class PropertiesViewModelBuilder
+    public class PropertiesViewModelBuilder : ViewModelBuilder
     {
-        private readonly IOrangeBricksContext _context;
-
-        public PropertiesViewModelBuilder(IOrangeBricksContext context)
-        {
-            _context = context;
-        }
+        public PropertiesViewModelBuilder(IOrangeBricksContext context) 
+            : base(context)
+        { }
 
         public PropertiesViewModel Build(PropertiesQuery query)
         {
             // The list of properties shown should NOT include properties that have an offer that was already accepted.
-            var properties = _context.Properties
+            var properties = context.Properties
                 .Include(p => p.Offers)
                 .Where(p => p.IsListedForSale)
                 .Where(p => !p.Offers.Any(o => o.Status == OfferStatus.Accepted));

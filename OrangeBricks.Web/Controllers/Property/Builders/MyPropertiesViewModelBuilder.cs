@@ -1,23 +1,21 @@
 using System.Linq;
 using OrangeBricks.Web.Controllers.Property.ViewModels;
 using OrangeBricks.Web.Models;
+using OrangeBricks.Web.Controllers.Base;
 
 namespace OrangeBricks.Web.Controllers.Property.Builders
 {
-    public class MyPropertiesViewModelBuilder
+    public class MyPropertiesViewModelBuilder : ViewModelBuilder
     {
-        private readonly IOrangeBricksContext _context;
-
         public MyPropertiesViewModelBuilder(IOrangeBricksContext context)
-        {
-            _context = context;
-        }
+            : base(context)
+        { }
 
         public MyPropertiesViewModel Build(string sellerId)
         {
             return new MyPropertiesViewModel
             {
-                Properties = _context.Properties
+                Properties = context.Properties
                     .Where(p => p.SellerUserId == sellerId)
                     .Select(p => new PropertyViewModel
                     {

@@ -164,7 +164,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Attributes\OrangeBricksAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Appointments\AppointmentsController.cs" />
+    <Compile Include="Controllers\Appointments\Builders\AppointmentsOnPropertyViewModelBuilder.cs" />
+    <Compile Include="Controllers\Appointments\ViewModels\AppointmentsOnPropertyViewModel.cs" />
+    <Compile Include="Controllers\Appointments\ViewModels\AppointmentViewModel.cs" />
     <Compile Include="Controllers\Base\CommandHandler.cs" />
+    <Compile Include="Controllers\Base\ViewModelBuilder.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Offers\Builders\OffersOnPropertyViewModelBuilder.cs" />
     <Compile Include="Controllers\Offers\Commands\AcceptOfferCommand.cs" />
@@ -240,6 +245,10 @@
     <Compile Include="Migrations\201707280209491_RenameAppointmentObject.cs" />
     <Compile Include="Migrations\201707280209491_RenameAppointmentObject.Designer.cs">
       <DependentUpon>201707280209491_RenameAppointmentObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707292214091_RenameSellerIdOnViewingAppointment.cs" />
+    <Compile Include="Migrations\201707292214091_RenameSellerIdOnViewingAppointment.Designer.cs">
+      <DependentUpon>201707292214091_RenameSellerIdOnViewingAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -317,6 +326,7 @@
     <None Include="Views\Account\UnAuthorized.cshtml" />
     <Content Include="Views\Offers\MyOffers.cshtml" />
     <Content Include="Views\Property\MakeAppointment.cshtml" />
+    <Content Include="Views\Appointments\OnProperty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -354,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707280209491_RenameAppointmentObject.resx">
       <DependentUpon>201707280209491_RenameAppointmentObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707292214091_RenameSellerIdOnViewingAppointment.resx">
+      <DependentUpon>201707292214091_RenameSellerIdOnViewingAppointment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

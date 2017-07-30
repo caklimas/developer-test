@@ -1,20 +1,18 @@
+using OrangeBricks.Web.Controllers.Base;
 using OrangeBricks.Web.Controllers.Property.ViewModels;
 using OrangeBricks.Web.Models;
 
 namespace OrangeBricks.Web.Controllers.Property.Builders
 {
-    public class MakeOfferViewModelBuilder
+    public class MakeOfferViewModelBuilder : ViewModelBuilder
     {
-        private readonly IOrangeBricksContext _context;
-
         public MakeOfferViewModelBuilder(IOrangeBricksContext context)
-        {
-            _context = context;
-        }
+            : base(context)
+        { }
 
         public MakeOfferViewModel Build(int id)
         {
-            var property = _context.Properties.Find(id);
+            var property = context.Properties.Find(id);
 
             return new MakeOfferViewModel
             {
