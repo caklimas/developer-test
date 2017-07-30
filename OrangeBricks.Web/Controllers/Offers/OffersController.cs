@@ -4,8 +4,6 @@ using OrangeBricks.Web.Attributes;
 using OrangeBricks.Web.Controllers.Offers.Builders;
 using OrangeBricks.Web.Controllers.Offers.Commands;
 using OrangeBricks.Web.Models;
-using OrangeBricks.Web.Controllers.Property.Builders;
-using OrangeBricks.Web.Controllers.Offers.ViewModels;
 using OrangeBricks.Web.Infrastructure;
 
 namespace OrangeBricks.Web.Controllers.Offers

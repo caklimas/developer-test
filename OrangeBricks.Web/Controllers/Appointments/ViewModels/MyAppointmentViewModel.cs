@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrangeBricks.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,28 +7,23 @@ using System.Web;
 namespace OrangeBricks.Web.Controllers.Appointments.ViewModels
 {
     /// <summary>
-    /// Represents an appointment that a buyer made.
+    /// Represents an appointment that was scheduled by a buyer.
     /// </summary>
-    public class AppointmentViewModel
+    public class MyAppointmentViewModel
     {
         /// <summary>
-        /// The unique id of the appointment.
+        /// The property that the appointment was scheduled for.
         /// </summary>
-        public int Id;
+        public Models.Property Property { get; set; }
 
         /// <summary>
-        /// The scheduled date of the appointment.
+        /// The date the appointment was scheduled on.
         /// </summary>
         public DateTime AppointmentDate { get; set; }
 
         /// <summary>
-        /// True if the status is pending, false otherwise.
-        /// </summary>
-        public bool IsPending { get; set; }
-
-        /// <summary>
         /// The status of the appointment.
         /// </summary>
-        public string Status { get; set; }
+        public ViewingAppointmentStatus Status { get; set; }
     }
 }

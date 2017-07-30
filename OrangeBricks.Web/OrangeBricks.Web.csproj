@@ -166,8 +166,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Appointments\AppointmentsController.cs" />
     <Compile Include="Controllers\Appointments\Builders\AppointmentsOnPropertyViewModelBuilder.cs" />
+    <Compile Include="Controllers\Appointments\Builders\MyAppointmentsViewModelBuilder.cs" />
+    <Compile Include="Controllers\Appointments\Commands\AcceptAppointmentCommand.cs" />
+    <Compile Include="Controllers\Appointments\Commands\AcceptAppointmentCommandHandler.cs" />
+    <Compile Include="Controllers\Appointments\Commands\RejectAppointmentCommand.cs" />
+    <Compile Include="Controllers\Appointments\Commands\RejectAppointmentCommandHandler.cs" />
     <Compile Include="Controllers\Appointments\ViewModels\AppointmentsOnPropertyViewModel.cs" />
     <Compile Include="Controllers\Appointments\ViewModels\AppointmentViewModel.cs" />
+    <Compile Include="Controllers\Appointments\ViewModels\MyAppointmentsViewModel.cs" />
+    <Compile Include="Controllers\Appointments\ViewModels\MyAppointmentViewModel.cs" />
     <Compile Include="Controllers\Base\CommandHandler.cs" />
     <Compile Include="Controllers\Base\ViewModelBuilder.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -178,9 +185,10 @@
     <Compile Include="Controllers\Offers\Commands\RejectOfferCommandHandler.cs" />
     <Compile Include="Controllers\Offers\OffersController.cs" />
     <Compile Include="Controllers\Offers\ViewModels\OffersOnPropertyViewModel.cs" />
+    <Compile Include="Controllers\Offers\ViewModels\OfferViewModel.cs" />
     <Compile Include="Controllers\Property\Builders\MakeAppointmentViewModelBuilder.cs" />
     <Compile Include="Controllers\Property\Builders\MakeOfferViewModelBuilder.cs" />
-    <Compile Include="Controllers\Property\Builders\MyOffersViewModelBuilder.cs" />
+    <Compile Include="Controllers\Offers\Builders\MyOffersViewModelBuilder.cs" />
     <Compile Include="Controllers\Property\Builders\MyPropertiesViewModelBuilder.cs" />
     <Compile Include="Controllers\Property\Builders\PropertiesQuery.cs" />
     <Compile Include="Controllers\Property\Builders\PropertiesViewModelBuilder.cs" />
@@ -194,6 +202,7 @@
     <Compile Include="Controllers\Property\Commands\MakeOfferCommandHandler.cs" />
     <Compile Include="Controllers\Property\PropertyController.cs" />
     <Compile Include="Controllers\Property\ViewModels\CreatePropertyViewModel.cs" />
+    <Compile Include="Controllers\Property\ViewModels\InvalidAppointmentViewModel.cs" />
     <Compile Include="Controllers\Property\ViewModels\MakeAppointmentViewModel.cs" />
     <Compile Include="Controllers\Property\ViewModels\MakeOfferViewModel.cs" />
     <Compile Include="Controllers\Offers\ViewModels\MyOffersViewModel.cs" />
@@ -327,6 +336,8 @@
     <Content Include="Views\Offers\MyOffers.cshtml" />
     <Content Include="Views\Property\MakeAppointment.cshtml" />
     <Content Include="Views\Appointments\OnProperty.cshtml" />
+    <Content Include="Views\Appointments\MyAppointments.cshtml" />
+    <Content Include="Views\Property\InvalidAppointment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

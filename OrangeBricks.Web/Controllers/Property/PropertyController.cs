@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -9,6 +10,7 @@ using OrangeBricks.Web.Controllers.Property.ViewModels;
 using OrangeBricks.Web.Models;
 using OrangeBricks.Web.Infrastructure;
 using System;
+using System.Data.Entity.Core.Objects;
 
 namespace OrangeBricks.Web.Controllers.Property
 {
@@ -109,12 +111,31 @@ namespace OrangeBricks.Web.Controllers.Property
         [OrangeBricksAuthorize(Roles = RoleConstants.Buyer)]
         public ActionResult MakeAppointment(MakeAppointmentCommand command)
         {
+            var existingAppointments = this._context.ViewingAppointments
+                .Include(va => va.Property)
+                .Any(a =>
+                    a.Status == ViewingAppointmentStatus.Accepted &&
+                    a.Property.Id == command.PropertyId &&
+                    command.AppointmentDate >= a.Date &&
+                    command.AppointmentDate <= DbFunctions.AddHours(a.Date, 1));
+
+            if (existingAppointments)
+                return RedirectToAction("InvalidAppointment", "Property", new { id = command.PropertyId });
+
             var handler = new MakeAppointmentCommandHandler(this._context);
             command.BuyerUserId = User.Identity.GetUserId();
 
             handler.Handle(command);
 
             return RedirectToAction("Index");
+        }
+
+        [OrangeBricksAuthorize(Roles = RoleConstants.Buyer)]
+        public ActionResult InvalidAppointment(int id)
+        {
+            var viewModel = new InvalidAppointmentViewModel { PropertyId = id };
+
+            return View(viewModel);
         }
     }
 }

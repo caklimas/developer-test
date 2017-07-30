@@ -1,0 +1,26 @@
+﻿@model OrangeBricks.Web.Controllers.Appointments.ViewModels.MyAppointmentsViewModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+@if (Model.Appointments.Any())
+{
+    <p>Here is a list of your appointments:</p>
+
+    foreach (var appointment in Model.Appointments)
+    {
+        var property = appointment.Property;
+        <hr />
+        <h3>@property.StreetName</h3>
+        <p>Date: @appointment.AppointmentDate</p>
+        <p>Status: <span class="@appointment.Status.ToString().ToLower()">@appointment.Status</span></p>
+    }
+}
+else
+{
+    <p>You do not have any appointments.</p>
+}

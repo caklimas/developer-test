@@ -16,8 +16,8 @@
         <div class="row">
             <div class='col-sm-6'>
                 <div class="form-group">
-                    <div class='input-group date appointment-picker' id="datetimepicker">
-                        <input type='text' class="form-control" name="AppointmentDate" />
+                    <div class='input-group date' id="datetimepicker">
+                        <input type='text' class="form-control appointment-picker" name="AppointmentDate" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -26,7 +26,7 @@
                 <script type="text/javascript">
                     $(function () {
                         $('#datetimepicker').datetimepicker({
-                            minDate: moment().add(1, 'hours'),
+                            minDate: moment().add(1, 'hours').startOf('hour'),
                             stepping: 30
                         });
                     });
@@ -35,5 +35,5 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Save changes</button>
+    <input type="submit" class="btn btn-default" value="Make Appointment" />
 }

@@ -12,6 +12,9 @@ namespace OrangeBricks.Web.Controllers.Property.ViewModels
         /// </summary>
         public Models.Property Property { get; set; }
 
+        /// <summary>
+        /// The scheduled date of the appointment.
+        /// </summary>
         public DateTime AppointmentDate { get; set; }
     }
 }

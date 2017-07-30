@@ -22,9 +22,29 @@
     {
         <hr />
         <div>
-            <p><strong>Appointment scheduled at: </strong> @appointment.AppointmentDate</p>
+            <p><strong>Appointment scheduled for: </strong> @appointment.AppointmentDate</p>
             <p><strong>Status: </strong> @appointment.Status</p>
         </div>
+
+        if (appointment.IsPending)
+        {
+            using (Html.BeginForm("Accept", "Appointments"))
+            {
+                @Html.Hidden("PropertyId", property.Id)
+                @Html.Hidden("AppointmentId", appointment.Id)
+                <p>
+                    <input type="submit" class="btn btn-default" value="Accept Appointment" />
+                </p>
+            }
+            using (Html.BeginForm("Reject", "Appointments"))
+            {
+                @Html.Hidden("PropertyId", property.Id)
+                @Html.Hidden("AppointmentId", appointment.Id)
+                <p>
+                    <input type="submit" class="btn btn-default" value="Reject Appointment" />
+                </p>
+            }
+        }
     }
 }
 else

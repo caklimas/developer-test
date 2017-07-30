@@ -8,7 +8,7 @@ using OrangeBricks.Web.Controllers.Offers.ViewModels;
 using System.Web.Mvc;
 using OrangeBricks.Web.Controllers.Base;
 
-namespace OrangeBricks.Web.Controllers.Property.Builders
+namespace OrangeBricks.Web.Controllers.Offers.Builders
 {
     /// <summary>
     /// Provides functionality to build an instance of <see cref="MyOffersViewModel"/>
