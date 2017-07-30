@@ -1,10 +1,10 @@
 ﻿@model OrangeBricks.Web.Controllers.Property.ViewModels.InvalidAppointmentViewModel
 
 @{
-    ViewBag.Title = "InvalidAppointment";
+    ViewBag.Title = "Invalid Appointment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>InvalidAppointment</h2>
+<h2>Invalid Appointment</h2>
 
 <p>An appointment has already been scheduled within an hour of your requested time. Please click @Html.ActionLink("here", "MakeAppointment", "Property", new { id = Model.PropertyId }, null) to make another appointment.</p>
